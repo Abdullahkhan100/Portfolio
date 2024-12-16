@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import pic from "../../public/photo.avif";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseSharp } from "react-icons/io5";
+import { Link } from "react-scroll";
 
 function Navbar() {
   const [menu, setMenu] = useState(false);
@@ -29,7 +30,7 @@ function Navbar() {
   ];
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto px-4 md:px-20 shadow-md h-16 fixed top-0 left-0 right-0">
+      <div className="max-w-screen-2xl container mx-auto px-4 md:px-20 shadow-md h-16 fixed top-0 left-0 right-0 bg-white z-50">
         <div className="flex justify-between items-center h-16">
           <div className="flex space-x-2">
             <img src={pic} className="h-12 w-12 rounded-full" alt="" />
@@ -46,19 +47,27 @@ function Navbar() {
                     className="hover:scale-105 duration-200 cursor-pointer"
                     key={id}
                   >
-                    {text}
+                    <Link
+                      to={text}
+                      smooth={true}
+                      duration={500}
+                      activeClass="active"
+                    >
+                      {" "}
+                      {text}{" "}
+                    </Link>
                   </li>
                 );
               })}
             </ul>
             <div onClick={() => setMenu(!menu)} className="md:hidden">
-              {menu ? <AiOutlineMenu size={24} /> : <IoCloseSharp size={24} />}
+              {menu ? <IoCloseSharp size={24} /> : <AiOutlineMenu size={24} />}
             </div>
           </div>
         </div>
         {/*mobile navbar*/}
         {menu && (
-          <div>
+          <div className="bg-white">
             <ul className="md:hidden flex flex-col h-screen items-center justify-center space-y-4 text-xl ">
               {navItems.map(({ id, text }) => {
                 return (
@@ -66,7 +75,16 @@ function Navbar() {
                     className="hover:scale-105 duration-200 cursor-pointer font-semibold"
                     key={id}
                   >
-                    {text}
+                    <Link
+                      onClick={() => setMenu(!menu)}
+                      to={text}
+                      smooth={true}
+                      duration={500}
+                      activeClass="active"
+                    >
+                      {" "}
+                      {text}{" "}
+                    </Link>
                   </li>
                 );
               })}
