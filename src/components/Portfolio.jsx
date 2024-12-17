@@ -62,87 +62,90 @@ function Portfolio() {
   };
 
   return (
-    <div
-      name="Portfolio"
-      className="max-w-screen-2xl container mx-auto px-4 md:px-20 mt-10"
-    >
-      <h1 className="text-3xl font-bold mb-5">Portfolio</h1>
-      <span className="underline font-semibold">Featured Projects</span>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-5">
-        {projects.map(
-          ({ id, logo, name, description, screenshots, liveUrl }) => (
-            <div
-              className="border-2 rounded-lg shadow-lg p-4 cursor-pointer hover:scale-105 transition-transform duration-300"
-              key={id}
-            >
-              <img
-                src={logo}
-                className="w-16 h-16 object-cover rounded-full mx-auto"
-                alt={`${name} logo`}
-              />
-              <h2 className="font-bold text-xl mb-2 text-center">{name}</h2>
-              <p className="text-gray-700 text-center">{description}</p>
-              <div className="text-center mt-4">
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded"
-                  onClick={() => openModal({ name, screenshots })}
-                >
-                  View Screenshots
-                </button>
-              </div>
-              {liveUrl && (
+    <>
+      <div
+        name="Portfolio"
+        className="max-w-screen-2xl container mx-auto px-4 md:px-20 mt-10"
+      >
+        <h1 className="text-3xl font-bold mb-5">Portfolio</h1>
+        <span className="underline font-semibold">Featured Projects</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-5">
+          {projects.map(
+            ({ id, logo, name, description, screenshots, liveUrl }) => (
+              <div
+                className="border-2 rounded-lg shadow-lg p-4 cursor-pointer hover:scale-105 transition-transform duration-300"
+                key={id}
+              >
+                <img
+                  src={logo}
+                  className="w-16 h-16 object-cover rounded-full mx-auto"
+                  alt={`${name} logo`}
+                />
+                <h2 className="font-bold text-xl mb-2 text-center">{name}</h2>
+                <p className="text-gray-700 text-center">{description}</p>
                 <div className="text-center mt-4">
-                  <a
-                    href={liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded"
+                    onClick={() => openModal({ name, screenshots })}
                   >
-                    Live Project
-                  </a>
+                    View Screenshots
+                  </button>
                 </div>
-              )}
-            </div>
-          )
+                {liveUrl && (
+                  <div className="text-center mt-4">
+                    <a
+                      href={liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline"
+                    >
+                      Live Project
+                    </a>
+                  </div>
+                )}
+              </div>
+            )
+          )}
+        </div>
+
+        {/* Modal for Viewing Screenshots */}
+        {isModalOpen && currentProject && (
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={closeModal}
+            contentLabel="Project Screenshots"
+            className="w-4/5 md:w-1/2 mx-auto bg-white p-5 rounded-lg shadow-lg my-20"
+            overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+          >
+            <h2 className="text-2xl font-bold mb-4">{currentProject.name}</h2>
+            <Carousel
+              showThumbs={false}
+              showStatus={false}
+              infiniteLoop
+              useKeyboardArrows
+              dynamicHeight
+            >
+              {currentProject.screenshots.map((screenshot, index) => (
+                <div key={index}>
+                  <img
+                    src={screenshot}
+                    alt={`Screenshot ${index + 1}`}
+                    className="rounded-md"
+                  />
+                </div>
+              ))}
+            </Carousel>
+            <button
+              onClick={closeModal}
+              className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Close
+            </button>
+          </Modal>
         )}
       </div>
-
-      {/* Modal for Viewing Screenshots */}
-      {isModalOpen && currentProject && (
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          contentLabel="Project Screenshots"
-          className="w-4/5 md:w-1/2 mx-auto bg-white p-5 rounded-lg shadow-lg my-20"
-          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-        >
-          <h2 className="text-2xl font-bold mb-4">{currentProject.name}</h2>
-          <Carousel
-            showThumbs={false}
-            showStatus={false}
-            infiniteLoop
-            useKeyboardArrows
-            dynamicHeight
-          >
-            {currentProject.screenshots.map((screenshot, index) => (
-              <div key={index}>
-                <img
-                  src={screenshot}
-                  alt={`Screenshot ${index + 1}`}
-                  className="rounded-md"
-                />
-              </div>
-            ))}
-          </Carousel>
-          <button
-            onClick={closeModal}
-            className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Close
-          </button>
-        </Modal>
-      )}
-    </div>
+      <hr />
+    </>
   );
 }
 

@@ -52,6 +52,7 @@ function About() {
           allow me to grow both personally and professionally.
         </p>
       </div>
+      <hr />
     </>
   );
 }
