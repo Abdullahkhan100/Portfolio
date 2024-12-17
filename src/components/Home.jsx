@@ -118,7 +118,7 @@ function Home() {
                   </li>
                 </ul>
                 <a
-                  href="../../public\Abdullah khan resume (2024).pdf" // Replace with the actual path to your CV file
+                  href="../../public\Abdullah khan dec-2024.pdf" // Replace with the actual path to your CV file
                   download="Abdullah_Khan_CV.pdf"
                   className="px-6 py-2 bg-red-700 text-white rounded-lg shadow-md hover:bg-green-600 transition duration-200 mt"
                 >
