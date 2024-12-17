@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import crmLogo from "../../public/crm-img.png";
 import crmScreenshot1 from "../../public/crm home.png";
 import crmScreenshot2 from "../../public/crm-image.png";
@@ -11,7 +13,6 @@ import erpLogo from "../../public/erp-logo.png";
 import erpScreenshot1 from "../../public/erp.png";
 import erpScreenshot2 from "../../public/erp-2.png";
 
-// Ensure the modal root element is set (important for accessibility and rendering).
 Modal.setAppElement("#root");
 
 function Portfolio() {
@@ -113,19 +114,26 @@ function Portfolio() {
           onRequestClose={closeModal}
           contentLabel="Project Screenshots"
           className="w-4/5 md:w-1/2 mx-auto bg-white p-5 rounded-lg shadow-lg my-20"
-          overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
         >
           <h2 className="text-2xl font-bold mb-4">{currentProject.name}</h2>
-          <div className="flex justify-center space-x-4">
+          <Carousel
+            showThumbs={false}
+            showStatus={false}
+            infiniteLoop
+            useKeyboardArrows
+            dynamicHeight
+          >
             {currentProject.screenshots.map((screenshot, index) => (
-              <img
-                key={index}
-                src={screenshot}
-                alt={`Screenshot ${index + 1}`}
-                className="w-64 h-auto rounded-md"
-              />
+              <div key={index}>
+                <img
+                  src={screenshot}
+                  alt={`Screenshot ${index + 1}`}
+                  className="rounded-md"
+                />
+              </div>
             ))}
-          </div>
+          </Carousel>
           <button
             onClick={closeModal}
             className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"

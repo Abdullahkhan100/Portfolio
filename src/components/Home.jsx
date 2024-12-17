@@ -61,11 +61,45 @@ function Home() {
             </p>
 
             <br />
+
             {/* {social media Icon} */}
-            <div className="flex flex-col items-center md:flex-row justify-between space-y-6 md:space-y-0">
+            <div className="flex flex-col  md:flex-row justify-between space-y-6 md:space-y-0">
               <div className="space-y-2">
-                <h1 className="font-semibold">Available on</h1>
-                <ul className="flex space-x-5">
+                <h1 className="font-semibold">Contact Me</h1>
+
+                <div className="contact-info mt-10 text-sm">
+                  <p>
+                    Email:{" "}
+                    <a
+                      href="mailto:khanabdullah.148@gmail.com"
+                      className="text-blue-500 hover:underline"
+                    >
+                      khanabdullah.148@gmail.com
+                    </a>
+                  </p>
+                  <p>
+                    Phone:{" "}
+                    <a
+                      href="tel:+917380888088"
+                      className="text-blue-500 hover:underline"
+                    >
+                      +91 73808 88088
+                    </a>
+                  </p>
+                  <a
+                    href="https://wa.me/917380888088"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center text-white bg-green-500 px-6 py-2 rounded-lg shadow-md hover:bg-green-600 transition duration-200"
+                  >
+                    <i className="fa fa-whatsapp mr-2"></i> WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              <div className="">
+                <h1 className="font-semibold">Connect Me</h1>
+                <ul className="flex space-x-5 my-4">
                   <li>
                     <a
                       href="https://www.linkedin.com/in/abdullah-khan-467a0b197/"
@@ -83,37 +117,10 @@ function Home() {
                     </a>
                   </li>
                 </ul>
-              </div>
-              {/* <div className="space-y-2">
-                <h1 className="font-bold">Currently Working on</h1>
-                <ul className="flex space-x-5">
-                  <li>
-                    <FaReact className="text-xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px]" />
-                  </li>
-                  <li>
-                    {" "}
-                    <IoLogoJavascript className="text-xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px]" />
-                  </li>
-                  <li>
-                    <FaHtml5 className="text-xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px]" />
-                  </li>
-                  <li>
-                    <FaCss3 className="text-xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px]" />
-                  </li>
-                  <li>
-                    <FaBootstrap className="text-xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px]" />
-                  </li>
-                  <li>
-                    <RiTailwindCssFill className="text-xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px]" />
-                  </li>
-                </ul>
-              </div> */}
-
-              <div className="mt-4">
                 <a
                   href="../../public\Abdullah khan resume (2024).pdf" // Replace with the actual path to your CV file
                   download="Abdullah_Khan_CV.pdf"
-                  className="px-6 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition duration-200"
+                  className="px-6 py-2 bg-red-700 text-white rounded-lg shadow-md hover:bg-green-600 transition duration-200 mt"
                 >
                   Download CV
                 </a>
